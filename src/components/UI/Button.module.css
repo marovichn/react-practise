@@ -1,10 +1,21 @@
 .btn {
-  padding: 10px;
-  border-radius: 10px;
   background-color: rgb(94, 233, 94);
   color: white;
-  font-weight: bold;
+  font-weight: bolder;
+  font-size: 18px;
   border: 1px solid #1f1f1f;
   width: 100%;
   margin-top: 10px;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:active {
+  background: #04ff43;
+  border-color: #00d30b;
+}
+
+.btn:focus {
+  outline: none;
 }

@@ -24,3 +24,11 @@
   outline: none;
   border-color: #4f005f;
 }
+
+.input label.error {
+  color: red;
+}
+.input input.error {
+  border: red;
+  background-color: salmon;
+}
