@@ -20,7 +20,7 @@ const AddUser = (props) => {
       setAge("");
       setUsername("");
     } else {
-      return;
+      props.onError(true);
     }
   };
 
