@@ -6,16 +6,18 @@ import ErrorModal from "./components/UI/ErrorModal";
 function App() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(false);
-  const errorTitle = "An error occured!";
-  const errorMessage = "Somethong went wrong! Check your inputs.";
+  const [errorTitle, setTitle] = useState("");
+  const [errorMessage, setMessage] = useState("");
 
   const deleteLi = (liId) => {
     setUsers(users.filter((user) => user.id !== liId));
   };
 
-  const errorHandler = (isError) => {
+  const errorHandler = (isError, message, title) => {
     if (isError) {
       setError(true);
+      setTitle(title);
+      setMessage(message);
     }
   };
 

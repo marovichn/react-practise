@@ -10,18 +10,42 @@ const AddUser = (props) => {
 
   const addUserHandler = (e) => {
     e.preventDefault();
-    if (Number(age) > 0 && username !== "" && age.trim().length !== "") {
-      console.log(`DataAdd: ${age} ${username}`);
-      props.onDataSubmited({
-        username: username,
-        age: age,
-        id: `id${Math.random()}`,
-      });
-      setAge("");
-      setUsername("");
-    } else {
-      props.onError(true);
+
+    if (username.trim().length === 0 || age.trim().length === 0) {
+      props.onError(
+        true,
+        "Please enter a valid name and age (non-empty values).",
+        "Empty inputs!"
+      );
+      return;
     }
+    if (age && +age < 18 && age >= 0) {
+      props.onError(
+        true,
+        "Please enter a valid age (not below 18)",
+        "Invalid age!"
+      );
+      return;
+    }
+    if (age && +age < 0) {
+      props.onError(
+        true,
+        "Please enter a valid age (not negative years)",
+        "Invalid age!"
+      );
+      return;
+    }
+    if (age && +age > 118) {
+      props.onError(true, "Please enter a valid age (too old)", "Invalid age!");
+      return;
+    }
+    props.onDataSubmited({
+      username: username,
+      age: age,
+      id: `id${Math.random()}`,
+    });
+    setAge("");
+    setUsername("");
   };
 
   const inputValueUsername = (ev) => {
